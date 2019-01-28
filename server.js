@@ -4,6 +4,7 @@ let helper=require('./test-helper')
 const fs = require('fs');
 var async = require("async");
 let {logger}=require('./winston')
+var process = require('process');
 let formData
 let supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjU0NTEwMDEyNywiZXhwIjoxNTQ4Nzc5NjE5MDAwMDAwLCJpYXQiOjE1NDg1MjA0MTkwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM0YzhiZTNmYjEzYmM0MjUxMjgxNGIzIiwicm9sZSI6InN1cGVydmlzb3IifX0.5rtFhXXnC7wYIyv3YyzAiTR9lr8w59amqrw-IXIWzrI"
 var regObject
@@ -49,6 +50,7 @@ function start(url,method,ticket,body) {
           let obj2={
             url:url,
             response:JSON.stringify(body),
+            process:process.pid,
             time:new Date().toTimeString()
           }
           logger.log({level:'info',message:obj2})
@@ -57,6 +59,7 @@ function start(url,method,ticket,body) {
           let obj3={
             url:url,
             response:JSON.stringify(error),
+            process:process.pid,
             time:new Date().toTimeString()
           }
           logger.log({level:'error',message:obj3})
@@ -115,14 +118,15 @@ function start(url,method,ticket,body) {
     let _rider=await start(url,'POST',null,rider)
     console.log(_rider.ticket,"==========================ACCESS #############################################");
 
+
 if(_rider){
      url='/location'
      let bgRider=await start(url,'POST',_rider.ticket,helper.generateBgLocation(obj,500))
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
 
-    let bgDriver=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
-
-    console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
+    
+  let bgDriver=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
+  console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
 
     url='/user/push'
     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
@@ -133,11 +137,6 @@ if(_rider){
     let driver_id=await start(url,'POST',_driver.ticket,{'pushId':pushId})
 
     console.log(driver_id,"========================= PUSH ID DRIVER #########################");
- 
-    url='/journey'
-    let jour=await start(url,'POST',_rider.ticket,coords)
-
-    console.log(jour,"========================= CREATE JOURNEY #########################");
   
    url='/add/car'
    let car={
@@ -151,6 +150,11 @@ if(_rider){
     let msg=await start(url,'POST',_driver.ticket,carId)
     console.log(msg,"========================= CONNECT DRIVER TO CAR #########################");
  
+    url='/journey'
+    let jour=await start(url,'POST',_rider.ticket,coords)
+
+    console.log(jour,"========================= CREATE JOURNEY #########################");
+
     url='/journey/latest'
     let last=await start(url,'GET',_rider.ticket)
     console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
@@ -182,7 +186,7 @@ setTimeout( async function(){
     end=await start(url,'POST',_driver.ticket,{"riderCode":startJ.journey.riderCode})
      console.log(end.journey.cost,"%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
          arr[end.journey._id] =end.journey.cost
-         fs.appendFile('history.json',JSON.stringify(arr)+','+'\r\n')
+         fs.appendFile('history.json',`{${JSON.stringify(arr)}+':'+${process.pid}}`+','+'\r\n')
          console.log(arr,"ARRAYYYYYY_____________________________==###");
          
     },10000)
@@ -193,8 +197,10 @@ setTimeout( async function(){
   }
 
 }
-  async.times(2, main, function(result){
+  async.times(1, main, function(result){
 
     console.log("RESULT############################");	
-
+    if (process.pid) {
+      console.log('This process is your pid :' + process.pid);
+    }
 })
