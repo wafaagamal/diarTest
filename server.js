@@ -84,6 +84,8 @@ function start(url,method,ticket,body) {
     }
    
     return new Promise(function (resolve, reject) {
+      console.log(option,"OPTIONS 2 ####################");
+      
       request(option, function (error, res, body) {
         if (!error && res.statusCode == 200){   
           resolve(body);
