@@ -35,7 +35,7 @@ var coords ={
 function start(url,method,ticket,body) {
    
     let option={
-        url: "http://localhost:3000/api"+url,
+        url: "http://23.22.157.198:3000/api"+url,
         method:method,
         json: true,
         headers: {
@@ -47,9 +47,7 @@ function start(url,method,ticket,body) {
     
     return new Promise(function (resolve, reject) {
       request(option, function (error, res, body) {
-       console.log(option,"SUPERADMIN*************************");
-       
-        
+      
         if (!error && res.statusCode == 200) {
           let obj2={
             url:url,
@@ -75,7 +73,7 @@ function start(url,method,ticket,body) {
   function activeDriver(url,method,ticket,body) {
    
     let option={
-        url: "http://localhost:3000/api"+url,
+        url: "http://23.22.157.198:3000/api"+url,
         method: method,
         formData:body,
         json:true,
@@ -100,21 +98,20 @@ function start(url,method,ticket,body) {
   try{
   
       let object ={
-        email:'bahi.hussien@gmail.com',
+        email:'bahi.hussein@gmail.com',
         password:'@Eserve2012'
       }
     let url='/access/staff'
     superadmin = await start(url,'POST',null,object)
     console.log(superadmin.ticket,"===========================superAdmin ############################");
 
-
-   
     url='/stage/admin'
     admin=generate.staff()
     let regObject = await start(url,'POST',superadmin.ticket,admin)
     console.log(regObject,"===========================Admin ############################");
 
-    await delay(1000);
+    await delay(2000)
+    
     regObject.password=helper.generate('mix', 8)
     url='/activate/staff'
     let Admin = await start(url,'POST',null,regObject)
@@ -132,7 +129,7 @@ function start(url,method,ticket,body) {
     let Supervisor = await start(url,'POST',null,regObject)
     console.log(Supervisor,"===========================activate-supervisor############################");
 
-    await delay(1000);
+    // await delay(1000);
     url='/stage/driver'
     regObject = await start(url,'POST',Supervisor.ticket,generate.driver())
     
@@ -258,7 +255,7 @@ setTimeout(async function(){
   }
 
 }
-  async.times(2, main, function(result){
+  async.times(1, main, function(result){
 
     console.log("RESULT############################");	
     if (process.pid) {
