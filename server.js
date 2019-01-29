@@ -7,8 +7,8 @@ let {logger}=require('./winston')
 var process = require('process');
 const delay = require('delay');
 let formData
-let supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjc3NjQ0NjUwMSwiZXhwIjoxNTQ4OTQ0NjY5MDAwMDAwLCJpYXQiOjE1NDg2ODU0NjkwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM0ZjEwOWQ4NWNlZjkyZWI4NTA1MTNmIiwicm9sZSI6InN1cGVydmlzb3IifX0.XHZojoaTWkEoM8XzC9m4A1Es8NX5MIAG6u3OSdwJsC8"
-var regObject
+let superadmin
+let admin
 let rider
 let end
 let arr={}
@@ -35,7 +35,7 @@ var coords ={
 function start(url,method,ticket,body) {
    
     let option={
-        url: "http://23.22.157.198:3000"+url,
+        url: "http://localhost:3000/api"+url,
         method:method,
         json: true,
         headers: {
@@ -47,6 +47,9 @@ function start(url,method,ticket,body) {
     
     return new Promise(function (resolve, reject) {
       request(option, function (error, res, body) {
+       console.log(option,"SUPERADMIN*************************");
+       
+        
         if (!error && res.statusCode == 200) {
           let obj2={
             url:url,
@@ -72,7 +75,7 @@ function start(url,method,ticket,body) {
   function activeDriver(url,method,ticket,body) {
    
     let option={
-        url: "http://23.22.157.198:3000"+url,
+        url: "http://localhost:3000/api"+url,
         method: method,
         formData:body,
         json:true,
@@ -96,8 +99,42 @@ function start(url,method,ticket,body) {
 
   try{
   
-      let url='/stage/driver'
-    regObject = await start(url,'POST',supervisor,generate.driver())
+      let object ={
+        email:'bahi.hussien@gmail.com',
+        password:'@Eserve2012'
+      }
+    let url='/access/staff'
+    superadmin = await start(url,'POST',null,object)
+    console.log(superadmin.ticket,"===========================superAdmin ############################");
+
+
+   
+    url='/stage/admin'
+    admin=generate.staff()
+    let regObject = await start(url,'POST',superadmin.ticket,admin)
+    console.log(regObject,"===========================Admin ############################");
+
+    await delay(1000);
+    regObject.password=helper.generate('mix', 8)
+    url='/activate/staff'
+    let Admin = await start(url,'POST',null,regObject)
+    console.log(Admin,"===========================activate-Admin ############################");
+
+    await delay(1000);
+    url='/stage/supervisor'
+    supervisor=generate.staff()
+    regObject = await start(url,'POST',Admin.ticket,supervisor)
+    console.log(regObject.email,"===========================supervisor ############################");
+
+    await delay(1000);
+    regObject.password=helper.generate('mix', 8)
+    url='/activate/staff'
+    let Supervisor = await start(url,'POST',null,regObject)
+    console.log(Supervisor,"===========================activate-supervisor############################");
+
+    await delay(1000);
+    url='/stage/driver'
+    regObject = await start(url,'POST',Supervisor.ticket,generate.driver())
     
     regObject.password=helper.generate('mix', 8)
     regObject.mobileNumber="010"+helper.generate('numeric', 8)
@@ -129,14 +166,13 @@ function start(url,method,ticket,body) {
 
 if(_rider){
 
-    await delay(2000);
+    await delay(1000);
      url='/location'
      let bgRider=await start(url,'POST',_rider.ticket,helper.generateBgLocation(obj,500))
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
 
-     await delay(2000);
-     
+    await delay(1000);
   let bgDriver=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
 
   console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
@@ -157,7 +193,7 @@ if(_rider){
     'uniqueId':helper.generate('numeric',6),
     'desc':helper.generate("lalpha",30)
    }
-    let carId=await start(url,'POST',supervisor,car)
+    let carId=await start(url,'POST',Supervisor.ticket,car)
     console.log(carId,"========================= CREATE CAR #########################");
 
     await delay(1000);
@@ -176,13 +212,13 @@ if(_rider){
     console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
     
     
-    await delay(1000);
-      url='/journey/accept'
-      let accept=await start(url,'POST',_driver.ticket,{"journeyId":last.journey._id})
-      console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
+    await delay(3000);
+    url='/journey/accept'
+    let accept=await start(url,'POST',_driver.ticket,{"journeyId":last.journey._id})
+    console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
  
 
-      await delay(1000);
+    await delay(1000);
     url='/journey/start'
     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(startJ,"========================= START JOURNEY #########################");
@@ -216,7 +252,7 @@ setTimeout(async function(){
          
     },1000*10000)
 
-   }//  
+  }//  
   }catch(err) {
     console.log("####################################ERROR",err)
   }
