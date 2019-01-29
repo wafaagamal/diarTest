@@ -113,7 +113,7 @@ function start(url,method,ticket,body) {
     let regObject = await start(url,'POST',superadmin.ticket,admin)
     console.log(regObject,"===========================Admin ############################");
 
-    await delay(2000)
+   
     
     regObject.password=helper.generate('mix', 8)
     url='/activate/staff'
