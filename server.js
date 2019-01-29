@@ -35,7 +35,7 @@ var coords ={
 function start(url,method,ticket,body) {
    
     let option={
-        url: "http://23.22.157.198:3000/api"+url,
+        url: "http://localhost:3000/api"+url,
         method:method,
         json: true,
         headers: {
@@ -47,6 +47,7 @@ function start(url,method,ticket,body) {
     
     return new Promise(function (resolve, reject) {
       request(option, function (error, res, body) {
+      console.log(option,"OPTIONS");
       
         if (!error && res.statusCode == 200) {
           let obj2={
@@ -73,7 +74,7 @@ function start(url,method,ticket,body) {
   function activeDriver(url,method,ticket,body) {
    
     let option={
-        url: "http://23.22.157.198:3000/api"+url,
+        url: "http://localhost:3000/api"+url,
         method: method,
         formData:body,
         json:true,
