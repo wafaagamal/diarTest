@@ -137,7 +137,7 @@ function start(url,method,ticket,body) {
     regObject.password=helper.generate('mix', 8)
     regObject.mobileNumber="010"+helper.generate('numeric', 8)
     formData = {
-        'image': fs.createReadStream('image.jpg'),
+        'image': fs.createReadStream('/home/brightmoon/git/diarApp/image.jpg'),
         'email': regObject.email,
         'password':regObject.password,
         'mobileNumber':regObject.mobileNumber,
