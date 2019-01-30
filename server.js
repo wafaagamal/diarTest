@@ -224,29 +224,29 @@ if(bgRider){
     console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
  
 
-//     await delay(1000);
-//     url='/journey/start'
-//     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
-//     console.log(startJ,"========================= START JOURNEY #########################");
+    await delay(1000);
+    url='/journey/start'
+    let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
+    console.log(startJ,"========================= START JOURNEY #########################");
     
-//     for(let c=0; c<10000; c++){
-//       console.log("hereeeeeeeeeeeeeeeeeeeee");
-//       url='/location'
-//       let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
-//       console.log(bg,"========================= BG LOCATION  #########################");
-//       await delay(1000);
-//     }
+    for(let c=0; c<10000; c++){
+      console.log("hereeeeeeeeeeeeeeeeeeeee");
+      url='/location'
+      let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
+      console.log(bg,"========================= BG LOCATION  #########################");
+      await delay(1000);
+    }
    
-//     // let time=setInterval(async function(){
-//     // console.log("HEREEEEE**************************************************");
-//     //       url='/location'
-//     //       let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
-//     //       console.log(bg,"========================= BG LOCATION  #########################");
-//     //       if(end){
-//     //       console.log("============================CLEAR INTERVAL======================");
-//     //         clearInterval(time)
-//     //       }
-//     // },10000)
+    // let time=setInterval(async function(){
+    // console.log("HEREEEEE**************************************************");
+    //       url='/location'
+    //       let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
+    //       console.log(bg,"========================= BG LOCATION  #########################");
+    //       if(end){
+    //       console.log("============================CLEAR INTERVAL======================");
+    //         clearInterval(time)
+    //       }
+    // },10000)
       
 // setTimeout(async function(){
 //     url='/journey/end'

@@ -9,7 +9,7 @@ deg2rad = function(deg) {
 	 * @param  {number} radius [in meter]
 	 * @return {[type]}        [description]
 	 */
-	generateCoords = function(center={lat:30.0384389,lng:31.3422343}, radius = 500){
+	generateCoords = function(center={lat:31.205753,lng:29.924526}, radius = 500){
 
 		console.log(`center==> ${JSON.stringify(center)}`)
 	    var y0 = parseFloat(center.lat);
