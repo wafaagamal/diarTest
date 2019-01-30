@@ -215,7 +215,7 @@ if(_rider){
     console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
     
     
-    await delay(2000);
+    await delay(3000);
     url='/journey/accept'
     let accept=await start(url,'POST',_driver.ticket,{"journeyId":last.journey._id})
     console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
