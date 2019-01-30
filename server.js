@@ -215,13 +215,13 @@ if(_rider){
     console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
     
     
-    await delay(5000);
+    await delay(2000);
     url='/journey/accept'
     let accept=await start(url,'POST',_driver.ticket,{"journeyId":last.journey._id})
     console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
  
 
-    await delay(1000);
+    await delay(2000);
     url='/journey/start'
     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(startJ,"========================= START JOURNEY #########################");
