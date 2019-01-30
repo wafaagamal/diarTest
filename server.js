@@ -248,15 +248,15 @@ if(bgRider){
     //       }
     // },10000)
       
-// setTimeout(async function(){
-//     url='/journey/end'
-//     end=await start(url,'POST',_driver.ticket,{"riderCode":startJ.journey.riderCode})
-//      console.log(end.journey.cost,"%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-//          arr[end.journey._id] =end.journey.cost
-//          fs.appendFile('history.json',`{${JSON.stringify(arr)} ,"prossesID": ${process.pid}}`+','+'\r\n')
-//          console.log(arr,"ARRAYYYYYY_____________________________==###");
+setTimeout(async function(){
+    url='/journey/end'
+    end=await start(url,'POST',_driver.ticket,{"riderCode":startJ.journey.riderCode})
+     console.log(end.journey.cost,"%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+         arr[end.journey._id] =end.journey.cost
+         fs.appendFile('history.json',`{${JSON.stringify(arr)} ,"prossesID": ${process.pid}}`+','+'\r\n')
+         console.log(arr,"ARRAYYYYYY_____________________________==###");
          
-//     },1000*10000)
+    },1000*10000)
 
   }//  
   }catch(err) {
