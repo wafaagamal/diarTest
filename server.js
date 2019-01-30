@@ -35,7 +35,7 @@ var coords ={
 function start(url,method,ticket,body) {
    
     let option={
-        url: "http://23.22.157.198:3000/api"+url,
+        url: "http://23.22.157.198:3000"+url,
         method:method,
         json: true,
         headers: {
@@ -74,7 +74,7 @@ function start(url,method,ticket,body) {
   function activeDriver(url,method,ticket,body) {
    
     let option={
-        url: "http://23.22.157.198:3000/api"+url,
+        url: "http://23.22.157.198:3000"+url,
         method: method,
         formData:body,
         json:true,
@@ -90,6 +90,8 @@ function start(url,method,ticket,body) {
         if (!error && res.statusCode == 200){   
           resolve(body);
         } else { 
+          console.log("IN ACTIVATE ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+          
           reject(error);
         }
       });
@@ -212,7 +214,7 @@ if(_rider){
     console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
     
     
-    await delay(3000);
+    await delay(5000);
     url='/journey/accept'
     let accept=await start(url,'POST',_driver.ticket,{"journeyId":last.journey._id})
     console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
