@@ -145,7 +145,7 @@ function start(url,method,ticket,body) {
         'mobileNumber':regObject.mobileNumber,
         'regCode':regObject.regCode,
      };
-     await delay(1000);
+    //  await delay(1000);
     url='/activate/driver'
     let _driver=  await activeDriver(url,'POST',null,formData)
    
