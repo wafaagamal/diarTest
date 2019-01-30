@@ -110,14 +110,15 @@ function start(url,method,ticket,body) {
     let url='/access/staff'
     superadmin = await start(url,'POST',null,object)
     console.log(superadmin.ticket,"===========================superAdmin ############################");
-
+   
+    await delay(1000);
     url='/stage/admin'
     admin=generate.staff()
     let regObject = await start(url,'POST',superadmin.ticket,admin)
     console.log(regObject,"===========================Admin ############################");
 
    
-    
+    await delay(1000);
     regObject.password=helper.generate('mix', 8)
     url='/activate/staff'
     let Admin = await start(url,'POST',null,regObject)
@@ -135,7 +136,7 @@ function start(url,method,ticket,body) {
     let Supervisor = await start(url,'POST',null,regObject)
     console.log(Supervisor,"===========================activate-supervisor############################");
 
-    // await delay(1000);
+     await delay(1000);
     url='/stage/driver'
     regObject = await start(url,'POST',Supervisor.ticket,generate.driver())
     
@@ -160,10 +161,10 @@ function start(url,method,ticket,body) {
     let riders=await start(url,'POST',null,rider)
     
    console.log(riders,"===================================CREATE #############################################");
+
    await delay(1000);
     url='/access/rider'
     let _rider=await start(url,'POST',null,rider)
-   
     console.log(_rider,"==========================ACCESS #############################################");
 
 
@@ -187,11 +188,9 @@ if(bgRider){
     url='/user/push'
     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
     let rider_id=await start(url,'POST',_rider.ticket,{'pushId':pushId})
-  
     console.log(rider_id,"========================= PUSH ID RIDER #########################");
 
     let driver_id=await start(url,'POST',_driver.ticket,{'pushId':pushId})
-  
     console.log(driver_id,"========================= PUSH ID DRIVER #########################");
   
    url='/add/car'
