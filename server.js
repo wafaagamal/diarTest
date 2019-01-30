@@ -169,7 +169,7 @@ function start(url,method,ticket,body) {
 
 if(_rider){
 
-    await delay(1000);
+    // await delay(1000);
      url='/location'
      console.log(obj,"center***************");
      let bg=helper.generateBgLocation(obj,300)
@@ -177,7 +177,7 @@ if(_rider){
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
 if(bgRider){
-    await delay(1000);
+    // await delay(1000);
     bg=helper.generateBgLocation(obj,500)
   let bgDriver=await start(url,'POST',_driver.ticket,bg)
 
