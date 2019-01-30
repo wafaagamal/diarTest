@@ -264,7 +264,7 @@ if(bgRider){
   }
 
 }
-  async.times(1, main, function(result){
+  async.times(5, main, function(result){
 
     console.log("RESULT############################");	
     if (process.pid) {
