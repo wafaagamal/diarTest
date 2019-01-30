@@ -172,7 +172,7 @@ if(_rider){
     await delay(1000);
      url='/location'
      console.log(obj,"center***************");
-     let bg=helper.generateBgLocation(obj,300)
+     let bg=helper.generateBgLocation(obj,500)
      let bgRider=await start(url,'POST',_rider.ticket,bg)
     
      console.log(bg,"========================= BG LOCATION RIDER #########################");
