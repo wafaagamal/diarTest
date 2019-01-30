@@ -183,7 +183,7 @@ if(bgRider){
 
   console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
 }
-  await delay(1000);
+ // await delay(1000);
     url='/user/push'
     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
     let rider_id=await start(url,'POST',_rider.ticket,{'pushId':pushId})
@@ -202,29 +202,29 @@ if(bgRider){
     let carId=await start(url,'POST',Supervisor.ticket,car)
     console.log(carId,"========================= CREATE CAR #########################");
 
-    await delay(1000);
+   // await delay(1000);
     url='/car/driver'
     let msg=await start(url,'POST',_driver.ticket,carId)   
     console.log(msg,"========================= CONNECT DRIVER TO CAR #########################");
  
-    await delay(1000);
+   // await delay(1000);
     url='/journey'
     let jour=await start(url,'POST',_rider.ticket,coords)
     console.log(jour,"========================= CREATE JOURNEY #########################");
 
-    await delay(1000);
+  //  await delay(1000);
     url='/journey/latest'
     let last=await start(url,'GET',_rider.ticket)
     console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
     
     
-     await delay(2000);
+   //  await delay(2000);
     url='/journey/accept'
     let accept=await start(url,'POST',_driver.ticket,{"journeyId":last.journey._id})
     console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
  
 
-    await delay(1000);
+    //await delay(1000);
     url='/journey/start'
     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(startJ,"========================= START JOURNEY #########################");
