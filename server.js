@@ -171,6 +171,7 @@ if(_rider){
 
     await delay(1000);
      url='/location'
+     console.log(obj,"center***************");
      
      let bgRider=await start(url,'POST',_rider.ticket,helper.generateBgLocation(obj,300))
     

@@ -157,6 +157,8 @@ module.exports = {
         // console.log(getDistanceFromLatLonInKm({lat:bgObj.latitude, lng:bgObj.longitude}, coords))
         bgObj.latitude = coords.lat;
         bgObj.longitude = coords.lng;
+        console.log(bgObj,"TEST HELPERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
+        
         return [
             bgObj
         ]
