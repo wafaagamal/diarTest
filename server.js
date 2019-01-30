@@ -66,6 +66,7 @@ function start(url,method,ticket,body) {
             time:new Date().toTimeString()
           }
           logger.log({level:'error',message:obj3})
+          console.log("IN start ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
           reject(error);
         }
       });
