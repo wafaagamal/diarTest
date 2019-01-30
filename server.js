@@ -176,13 +176,13 @@ if(_rider){
      let bgRider=await start(url,'POST',_rider.ticket,bg)
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
-// if(bgRider){
-//     // await delay(1000);
-//     bg=helper.generateBgLocation(obj,500)
-//   let bgDriver=await start(url,'POST',_driver.ticket,bg)
+if(bgRider){
+    // await delay(1000);
+    bg=helper.generateBgLocation(obj,500)
+  let bgDriver=await start(url,'POST',_driver.ticket,bg)
 
-//   console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
-// }
+  console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
+}
 //   await delay(1000);
 //     url='/user/push'
 //     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
