@@ -90,7 +90,7 @@ function start(url,method,ticket,body) {
         if (!error && res.statusCode == 200){   
           resolve(body);
         } else { 
-          console.log("IN ACTIVATE ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode);
+          console.log("IN ACTIVATE ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
           
           reject(error);
         }
