@@ -171,14 +171,15 @@ if(_rider){
 
     await delay(1000);
      url='/location'
+     
      let bgRider=await start(url,'POST',_rider.ticket,helper.generateBgLocation(obj,300))
     
-     console.log(bgRider,"========================= BG LOCATION RIDER #########################");
+     console.log(helper.generateBgLocation(obj,300),"========================= BG LOCATION RIDER #########################");
 
     await delay(1000);
   let bgDriver=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
 
-  console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
+  console.log(helper.generateBgLocation(obj,500),"========================= BG LOCATION DRIVER #########################");
 
   await delay(1000);
     url='/user/push'
