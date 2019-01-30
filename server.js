@@ -227,34 +227,34 @@ if(_rider){
     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(startJ,"========================= START JOURNEY #########################");
     
-    for(let c=0; c<10000; c++){
-      console.log("hereeeeeeeeeeeeeeeeeeeee");
-      url='/location'
-      let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
-      console.log(bg,"========================= BG LOCATION  #########################");
-      await delay(1000);
-    }
+//     for(let c=0; c<10000; c++){
+//       console.log("hereeeeeeeeeeeeeeeeeeeee");
+//       url='/location'
+//       let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
+//       console.log(bg,"========================= BG LOCATION  #########################");
+//       await delay(1000);
+//     }
    
-    // let time=setInterval(async function(){
-    // console.log("HEREEEEE**************************************************");
-    //       url='/location'
-    //       let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
-    //       console.log(bg,"========================= BG LOCATION  #########################");
-    //       if(end){
-    //       console.log("============================CLEAR INTERVAL======================");
-    //         clearInterval(time)
-    //       }
-    // },10000)
+//     // let time=setInterval(async function(){
+//     // console.log("HEREEEEE**************************************************");
+//     //       url='/location'
+//     //       let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
+//     //       console.log(bg,"========================= BG LOCATION  #########################");
+//     //       if(end){
+//     //       console.log("============================CLEAR INTERVAL======================");
+//     //         clearInterval(time)
+//     //       }
+//     // },10000)
       
-setTimeout(async function(){
-    url='/journey/end'
-    end=await start(url,'POST',_driver.ticket,{"riderCode":startJ.journey.riderCode})
-     console.log(end.journey.cost,"%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-         arr[end.journey._id] =end.journey.cost
-         fs.appendFile('history.json',`{${JSON.stringify(arr)} ,"prossesID": ${process.pid}}`+','+'\r\n')
-         console.log(arr,"ARRAYYYYYY_____________________________==###");
+// setTimeout(async function(){
+//     url='/journey/end'
+//     end=await start(url,'POST',_driver.ticket,{"riderCode":startJ.journey.riderCode})
+//      console.log(end.journey.cost,"%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+//          arr[end.journey._id] =end.journey.cost
+//          fs.appendFile('history.json',`{${JSON.stringify(arr)} ,"prossesID": ${process.pid}}`+','+'\r\n')
+//          console.log(arr,"ARRAYYYYYY_____________________________==###");
          
-    },1000*10000)
+//     },1000*10000)
 
   }//  
   }catch(err) {
