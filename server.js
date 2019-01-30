@@ -164,7 +164,7 @@ function start(url,method,ticket,body) {
     url='/access/rider'
     let _rider=await start(url,'POST',null,rider)
    
-    console.log(_rider.user._id,"==========================ACCESS #############################################");
+    console.log(_rider,"==========================ACCESS #############################################");
 
 
 if(_rider){
