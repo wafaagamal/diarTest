@@ -218,7 +218,7 @@ if(bgRider){
     console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
     
     
-     await delay(1000);
+     await delay(2000);
     url='/journey/accept'
     let accept=await start(url,'POST',_driver.ticket,{"journeyId":last.journey._id})
     console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
