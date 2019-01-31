@@ -218,24 +218,24 @@ if(bgRider){
     console.log(startJ,"========================= START JOURNEY #########################");
     
     await delay(2000);
-    for(let c=0; c<600; c++){
-      console.log("hereeeeeeeeeeeeeeeeeeeee");
-      url='/location'
-      let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
-      console.log(bg,"========================= BG LOCATION  #########################");
-      await delay(1000);
-    }
+    // for(let c=0; c<600; c++){
+    //   console.log("hereeeeeeeeeeeeeeeeeeeee");
+    //   url='/location'
+    //   let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
+    //   console.log(bg,"========================= BG LOCATION  #########################");
+    //   await delay(1000);
+    // }
    
-    // let time=setInterval(async function(){
-    // console.log("HEREEEEE**************************************************");
-    //       url='/location'
-    //       let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
-    //       console.log(bg,"========================= BG LOCATION  #########################");
-    //       if(end){
-    //       console.log("============================CLEAR INTERVAL======================");
-    //         clearInterval(time)
-    //       }
-    // },10000)
+    let time=setInterval(async function(){
+    console.log("HEREEEEE**************************************************");
+          url='/location'
+          let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
+          console.log(bg,"========================= BG LOCATION  #########################");
+          if(end){
+          console.log("============================CLEAR INTERVAL======================");
+            clearInterval(time)
+          }
+    },1000)
       
 setTimeout(async function(){
     console.log("%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
