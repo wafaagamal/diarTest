@@ -204,6 +204,7 @@ if(bgRider){
     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(startJ,"========================= START JOURNEY #########################");
     
+    await delay(2000);
     for(let c=0; c<600; c++){
       console.log("hereeeeeeeeeeeeeeeeeeeee");
       url='/location'
