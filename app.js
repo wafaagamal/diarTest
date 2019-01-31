@@ -99,6 +99,8 @@ function start(url,method,ticket,body) {
                 }
                 logger.log({level:'info',message:obj2})
                     resolve(response);
+                    console.log(response,"REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                    
                 }
             })
             .catch(function(err) {
