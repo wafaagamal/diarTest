@@ -64,10 +64,7 @@ function start(url,method,ticket,body) {
             time:dateFormat(now, "dd,mm, yyyy,h")
           }
           logger.log({level:'info',message:obj2})
-          let wait = setTimeout(() => {
-            clearTimout(wait);
             resolve(body);
-          },30000)
         } else {
           let obj3={
             url:url,
@@ -247,7 +244,7 @@ setTimeout(async function(){
   }
 
 }
-  async.times(1, main, function(result){
+  async.times(10, main, function(result){
 
     console.log("RESULT############################");	
     if (process.pid) {
