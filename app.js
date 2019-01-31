@@ -14,6 +14,7 @@ var now = new Date();
 let rider
 let Supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjcyNjAyNzcxMiwiZXhwIjoxNTQ5MTk1MTE3MDAwMDAwLCJpYXQiOjE1NDg5MzU5MTcwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM1MmUyZWM3NDcwNDYwN2Y0NWYyYjI5Iiwicm9sZSI6InN1cGVydmlzb3IifX0.UOgzduGD8RcHVN_8gZf73c3KuNFLnCoMMpov7oZ0oAI"
 let end
+let  regObject
 let arr={}
 var obj=
 { 
