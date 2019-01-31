@@ -239,7 +239,7 @@ setTimeout(async function(){
   }
 
 }
-  async.times(10, main, function(result){
+  async.times(8, main, function(result){
 
     console.log("RESULT############################");	
     if (process.pid) {
