@@ -46,16 +46,13 @@ function start(url,method,ticket,body) {
             'ticket':ticket 
         },
         body: body,
-        timeout: 300000,
+        timeout: 50000,
     }
    
     
     return new Promise(function (resolve, reject) {
       request(option, function (error, res, body) {
       console.log(option,"OPTIONS");
-      
-    console.log(error,"~~~~~~~~~SERVER TIMEOUT~~~~~~~~")
-      
         if (!error && res.statusCode == 200) {
           let obj2={
             url:url,
@@ -89,16 +86,13 @@ function start(url,method,ticket,body) {
         headers: {
             'ticket':ticket 
         },
-        timeout: 300000
+        timeout: 50000
     }
    
     return new Promise(function (resolve, reject) {
       console.log(option,"OPTIONS 2 ####################");
       
       request(option, function (error, res, body) {
-
-      //  if(error.code === 'ETIMEDOUT'){console.log("~~~~~~~~~SERVER TIMEOUT2~~~~~~~~")}
-
         if (!error && res.statusCode == 200){   
           resolve(body);
         } else { 
