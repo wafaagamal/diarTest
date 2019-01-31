@@ -148,6 +148,8 @@ function start(url,method,ticket,body) {
     // await delay(1000);
     url='/stage/driver'
     regObject = await start(url,'POST',Supervisor,generate.driver())
+    console.log(regObject,"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+    
     regObject.password=helper.generate('mix', 8)
     regObject.mobileNumber="010"+helper.generate('numeric', 8)
     formData = {
