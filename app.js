@@ -203,7 +203,7 @@ if(bgRider){
     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(startJ,"========================= START JOURNEY #########################");
     
-    for(let c=0; c<60; c++){
+    for(let c=0; c<600; c++){
       console.log("hereeeeeeeeeeeeeeeeeeeee");
       url='/location'
       let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
@@ -231,7 +231,7 @@ setTimeout(async function(){
          fs.appendFile('history.json',`{${JSON.stringify(arr)} ,"prossesID": ${process.pid}}`+','+'\r\n')
          console.log(arr,"ARRAYYYYYY_____________________________==###");
          
-    },60*10000)
+    },600000)
 
   }//  
   }catch(err) {
