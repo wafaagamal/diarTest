@@ -86,35 +86,37 @@ function start(url,method,ticket,body) {
                 didTimeOut = true;
                 reject(new Error('Request timed out'));
             }, FETCH_TIMEOUT);
-            
-            request(option)
-            .then(function(response) {
-                // Clear the timeout as cleanup
-                clearTimeout(timeout);
-                if(!didTimeOut) {
-                let obj2={
-                    url:url,
-                    response:JSON.stringify(response.body),
-                    process:process.pid,
-                    time:dateFormat(now, "dd,mm, yyyy,h")
-                }
-                logger.log({level:'info',message:obj2})
-                    resolve(response);
-                    console.log(response,"REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-                    
-                }
-            })
-            .catch(function(err) {
-                if(didTimeOut) return;
-                let obj3={
-                    url:url,
-                    response:JSON.stringify(err),
-                    process:process.pid,
-                    time:dateFormat(now, "dd,mm, yyyy,h")
-                }
-                logger.log({level:'error',message:obj3})
-                reject(err);
-            });
+            return new Promise(function (resolve, reject) {
+                request(option, function (error, res, body) {
+                console.log(option,"OPTIONS");
+                
+                  if (!error && res.statusCode == 200) {
+                    let obj2={
+                      url:url,
+                      response:JSON.stringify(body),
+                      process:process.pid,
+                      time:dateFormat(now, "dd,mm, yyyy,h")
+                    }
+                    logger.log({level:'info',message:obj2})
+                    clearTimeout(timeout)
+                    if(!didTimeOut) {
+                    resolve(body);
+                    }
+                  } else {
+                    let obj3={
+                      url:url,
+                      response:JSON.stringify(body),
+                      process:process.pid,
+                      time:dateFormat(now, "dd,mm, yyyy,h")
+                    }
+                    logger.log({level:'error',message:obj3})
+                    console.log("IN start ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
+                    if(didTimeOut) return;
+                    reject(error);
+                  }
+                });
+              });
+          
         })
         .then(function() {
             console.log('good promise, no timeout! ');
