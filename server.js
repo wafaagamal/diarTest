@@ -35,7 +35,7 @@ var coords ={
 function start(url,method,ticket,body) {
    
     let option={
-        url: "http://ec2-54-224-160-154.compute-1.amazonaws.com:3000"+url,
+        url: "http://ec2-54-224-160-154.compute-1.amazonaws.com:3000/api"+url,
         method:method,
         json: true,
         headers: {
