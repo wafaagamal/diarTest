@@ -112,7 +112,7 @@ function start(url,method,ticket,body) {
     console.log(superadmin.ticket,"===========================superAdmin ############################");
 
 
-    await delay(1000);
+    
     url='/stage/admin'
     admin=generate.staff()
     let regObject = await start(url,'POST',superadmin.ticket,admin)
