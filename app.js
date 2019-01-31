@@ -51,7 +51,7 @@ function start(url,method,ticket,body) {
       request(option, function (error, res, body) {
       console.log(option,"OPTIONS");
       
-      if(err.code === 'ETIMEDOUT'){console.log("~~~~~~~~~SERVER TIMEOUT~~~~~~~~")}
+      if(error.code === 'ETIMEDOUT'){console.log("~~~~~~~~~SERVER TIMEOUT~~~~~~~~")}
       
         if (!error && res.statusCode == 200) {
           let obj2={
@@ -94,7 +94,7 @@ function start(url,method,ticket,body) {
       
       request(option, function (error, res, body) {
 
-        if(err.code === 'ETIMEDOUT'){console.log("~~~~~~~~~SERVER TIMEOUT2~~~~~~~~")}
+        if(error.code === 'ETIMEDOUT'){console.log("~~~~~~~~~SERVER TIMEOUT2~~~~~~~~")}
 
         if (!error && res.statusCode == 200){   
           resolve(body);
