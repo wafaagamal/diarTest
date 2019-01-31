@@ -230,7 +230,7 @@ setTimeout(async function(){
          fs.appendFile('history.json',`{${JSON.stringify(arr)} ,"prossesID": ${process.pid}}`+','+'\r\n')
          console.log(arr,"ARRAYYYYYY_____________________________==###");
          
-    },1000*10000)
+    },60*10000)
 
   }//  
   }catch(err) {
