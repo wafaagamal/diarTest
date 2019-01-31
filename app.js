@@ -1,4 +1,4 @@
-var request = require('request-promise');
+var request = require('request');
 var generate=require('./generator')
 let helper=require('./test-helper')
 const fs = require('fs');
@@ -290,7 +290,7 @@ setTimeout(async function(){
   }
 
 }
-  async.times(10, main, function(result){
+  async.times(1, main, function(result){
 
     console.log("RESULT############################");	
     if (process.pid) {
