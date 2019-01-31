@@ -203,7 +203,7 @@ if(bgRider){
     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(startJ,"========================= START JOURNEY #########################");
     
-    for(let c=0; c<10000; c++){
+    for(let c=0; c<60; c++){
       console.log("hereeeeeeeeeeeeeeeeeeeee");
       url='/location'
       let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
