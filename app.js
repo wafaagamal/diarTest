@@ -86,7 +86,7 @@ function start(url,method,ticket,body) {
                 reject(new Error('Request timed out'));
             }, FETCH_TIMEOUT);
             
-            fetch(option)
+            request(option)
             .then(function(response) {
                 // Clear the timeout as cleanup
                 clearTimeout(timeout);
