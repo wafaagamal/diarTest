@@ -12,7 +12,7 @@ const FETCH_TIMEOUT = 30000;
 let didTimeOut = false;
 var now = new Date();
 let rider
-let Supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjI5Nzc0MzczMCwiZXhwIjoxNTQ5MjA2MTAxMDAwMDAwLCJpYXQiOjE1NDg5NDY5MDEwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM1MzA4ZjBkMjhkZTYyMGE4MGJmYmRiIiwicm9sZSI6InN1cGVydmlzb3IifX0.IsIhblgQKRJdD8dH5wMPhh5zsapmq680xejZPqu-8jQ"
+let Supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjQ4MzkxMzQzOCwiZXhwIjoxNTQ5MjA2ODYwMDAwMDAwLCJpYXQiOjE1NDg5NDc2NjAwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM1MzEwY2IyY2FmM2QxZjAwYmRkMGRhIiwicm9sZSI6InN1cGVydmlzb3IifX0.qKrAwVELIrNL-JgDM87I3u821vwX6crtflj7L8B43XQ"
 let end
 let  regObject
 let arr={}
