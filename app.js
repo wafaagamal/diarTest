@@ -7,6 +7,8 @@ let {logger}=require('./winston')
 var process = require('process');
 const delay = require('delay');
 let formData
+var dateFormat = require('dateformat');
+var now = new Date();
 let rider
 let Supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjcyNjAyNzcxMiwiZXhwIjoxNTQ5MTk1MTE3MDAwMDAwLCJpYXQiOjE1NDg5MzU5MTcwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM1MmUyZWM3NDcwNDYwN2Y0NWYyYjI5Iiwicm9sZSI6InN1cGVydmlzb3IifX0.UOgzduGD8RcHVN_8gZf73c3KuNFLnCoMMpov7oZ0oAI"
 let end
@@ -53,7 +55,7 @@ function start(url,method,ticket,body) {
             url:url,
             response:JSON.stringify(body),
             process:process.pid,
-            time:new Date().toTimeString()
+            time:dateFormat(now, "dd,mm, yyyy,h")
           }
           logger.log({level:'info',message:obj2})
           resolve(body);
@@ -62,7 +64,7 @@ function start(url,method,ticket,body) {
             url:url,
             response:JSON.stringify(body),
             process:process.pid,
-            time:new Date().toTimeString()
+            time:dateFormat(now, "dd,mm, yyyy,h")
           }
           logger.log({level:'error',message:obj3})
           console.log("IN start ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
