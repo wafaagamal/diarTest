@@ -148,7 +148,7 @@ function start(url,method,ticket,body) {
         'mobileNumber':regObject.mobileNumber,
         'regCode':regObject.regCode,
      };
-    //  await delay(1000);
+    await delay(1000);
     url='/activate/driver'
     let _driver=  await activeDriver(url,'POST',null,formData)
    
@@ -212,13 +212,13 @@ if(bgRider){
     let jour=await start(url,'POST',_rider.ticket,coords)
     console.log(jour,"========================= CREATE JOURNEY #########################");
 
-  //  await delay(1000);
+   await delay(1000);
     url='/journey/latest'
     let last=await start(url,'GET',_rider.ticket)
     console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
     
     
-   //  await delay(2000);
+    await delay(2000);
     url='/journey/accept'
     let accept=await start(url,'POST',_driver.ticket,{"journeyId":last.journey._id})
     console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
