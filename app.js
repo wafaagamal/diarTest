@@ -46,7 +46,7 @@ function start(url,method,ticket,body) {
             'ticket':ticket 
         },
         body: body,
-        timeout: 100000,
+        timeout: 1000000,
     }
    
     
@@ -86,7 +86,7 @@ function start(url,method,ticket,body) {
         headers: {
             'ticket':ticket 
         },
-        timeout: 100000
+        timeout: 1000000
     }
    
     return new Promise(function (resolve, reject) {
