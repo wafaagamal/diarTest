@@ -128,7 +128,7 @@ function start(url,method,ticket,body) {
    
  console.log(_driver.user._id,"=========================== DRIVER ID ############################");
  
- await delay(1000);
+ await delay(2000);
     url='/create/rider'
     rider=generate.rider()
     let riders=await start(url,'POST',null,rider)
@@ -151,13 +151,13 @@ if(_rider){
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
 if(bgRider){
-     await delay(1000);
+     await delay(2000);
     bg=helper.generateBgLocation(obj,500)
   let bgDriver=await start(url,'POST',_driver.ticket,bg)
 
   console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
 }
-   await delay(1000);
+   await delay(2000);
     url='/user/push'
     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
     let rider_id=await start(url,'POST',_rider.ticket,{'pushId':pushId})
@@ -168,6 +168,7 @@ if(bgRider){
   
     console.log(driver_id,"========================= PUSH ID DRIVER #########################");
   
+    await delay(2000);
    url='/add/car'
    let car={
     'uniqueId':helper.generate('numeric',6),
@@ -181,12 +182,12 @@ if(bgRider){
     let msg=await start(url,'POST',_driver.ticket,carId)   
     console.log(msg,"========================= CONNECT DRIVER TO CAR #########################");
  
-    await delay(1000);
+    await delay(2000);
     url='/journey'
     let jour=await start(url,'POST',_rider.ticket,coords)
     console.log(jour,"========================= CREATE JOURNEY #########################");
 
-   await delay(1000);
+   await delay(2000);
     url='/journey/latest'
     let last=await start(url,'GET',_rider.ticket)
     console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
@@ -198,7 +199,7 @@ if(bgRider){
     console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
  
 
-    await delay(1000);
+    await delay(2000);
     url='/journey/start'
     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(startJ,"========================= START JOURNEY #########################");
