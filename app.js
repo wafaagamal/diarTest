@@ -91,15 +91,25 @@ function start(url,method,ticket,body) {
                 // Clear the timeout as cleanup
                 clearTimeout(timeout);
                 if(!didTimeOut) {
-                    console.log('fetch good! ', response);
+                let obj2={
+                    url:url,
+                    response:JSON.stringify(response.body),
+                    process:process.pid,
+                    time:dateFormat(now, "dd,mm, yyyy,h")
+                }
+                logger.log({level:'info',message:obj2})
                     resolve(response);
                 }
             })
             .catch(function(err) {
-                console.log('fetch failed! ', err);
-                // Rejection already happened with setTimeout
                 if(didTimeOut) return;
-                // Reject with error
+                let obj3={
+                    url:url,
+                    response:JSON.stringify(err),
+                    process:process.pid,
+                    time:dateFormat(now, "dd,mm, yyyy,h")
+                }
+                logger.log({level:'error',message:obj3})
                 reject(err);
             });
         })
