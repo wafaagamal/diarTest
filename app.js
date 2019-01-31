@@ -127,7 +127,7 @@ function start(url,method,ticket,body) {
     let riders=await start(url,'POST',null,rider)
     
    console.log(riders,"===================================CREATE #############################################");
-   await delay(1000);
+   await delay(2000);
     url='/access/rider'
     let _rider=await start(url,'POST',null,rider)
    
@@ -150,7 +150,7 @@ if(bgRider){
 
   console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
 }
- // await delay(1000);
+   await delay(1000);
     url='/user/push'
     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
     let rider_id=await start(url,'POST',_rider.ticket,{'pushId':pushId})
@@ -169,12 +169,12 @@ if(bgRider){
     let carId=await start(url,'POST',Supervisor,car)
     console.log(carId,"========================= CREATE CAR #########################");
 
-   // await delay(1000);
+    await delay(1000);
     url='/car/driver'
     let msg=await start(url,'POST',_driver.ticket,carId)   
     console.log(msg,"========================= CONNECT DRIVER TO CAR #########################");
  
-   // await delay(1000);
+    await delay(1000);
     url='/journey'
     let jour=await start(url,'POST',_rider.ticket,coords)
     console.log(jour,"========================= CREATE JOURNEY #########################");
