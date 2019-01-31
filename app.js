@@ -143,7 +143,7 @@ function start(url,method,ticket,body) {
 
 if(_rider){
 
-     await delay(1000);
+     await delay(2000);
      url='/location'
      console.log(obj,"center***************");
      let bg=helper.generateBgLocation(obj,300)
