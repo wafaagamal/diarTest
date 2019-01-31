@@ -119,7 +119,7 @@ function start(url,method,ticket,body) {
     console.log(regObject,"===========================Admin ############################");
 
    
-    
+    await delay(1000);
     regObject.password=helper.generate('mix', 8)
     url='/activate/staff'
     let Admin = await start(url,'POST',null,regObject)
