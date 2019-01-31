@@ -223,6 +223,7 @@ if(bgRider){
     // },10000)
       
 setTimeout(async function(){
+    console.log("%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
     url='/journey/end'
     end=await start(url,'POST',_driver.ticket,{"riderCode":startJ.journey.riderCode})
      console.log(end.journey.cost,"%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
