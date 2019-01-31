@@ -94,10 +94,23 @@ function start(url,method,ticket,body) {
       
       request(option, function (error, res, body) {
         if (!error && res.statusCode == 200){   
+            let obj2={
+                url:url,
+                response:JSON.stringify(body),
+                process:process.pid,
+                time:dateFormat(now, "dd,mm, yyyy,h")
+              }
+              logger.log({level:'info',message:obj2})
           resolve(body);
         } else { 
           console.log("IN ACTIVATE ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
-          
+          let obj3={
+            url:url,
+            response:JSON.stringify(body),
+            process:process.pid,
+            time:dateFormat(now, "dd,mm, yyyy,h")
+          }
+          logger.log({level:'error',message:obj3})
           reject(error);
         }
       });
