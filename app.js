@@ -80,7 +80,7 @@ function start(url,method,ticket,body) {
 
 
           
-        new Promise(function(resolve, reject) {
+        return  new Promise(function(resolve, reject) {
             const timeout = setTimeout(function() {
                 didTimeOut = true;
                 reject(new Error('Request timed out'));
@@ -97,7 +97,6 @@ function start(url,method,ticket,body) {
             })
             .catch(function(err) {
                 console.log('fetch failed! ', err);
-                
                 // Rejection already happened with setTimeout
                 if(didTimeOut) return;
                 // Reject with error
@@ -105,11 +104,9 @@ function start(url,method,ticket,body) {
             });
         })
         .then(function() {
-            // Request success and no timeout
             console.log('good promise, no timeout! ');
         })
         .catch(function(err) {
-            // Error: response error, request timeout or runtime error
             console.log('promise error! ', err);
         });
   }
@@ -151,7 +148,6 @@ function start(url,method,ticket,body) {
     // await delay(1000);
     url='/stage/driver'
     regObject = await start(url,'POST',Supervisor,generate.driver())
-    
     regObject.password=helper.generate('mix', 8)
     regObject.mobileNumber="010"+helper.generate('numeric', 8)
     formData = {
