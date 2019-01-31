@@ -75,7 +75,7 @@ function start(url,method,ticket,body) {
   function activeDriver(url,method,ticket,body) {
    
     let option={
-        url: "http://23.22.157.198:3000/api"+url,
+        url: "http://ec2-54-224-160-154.compute-1.amazonaws.com:3000/api"+url,
         method: method,
         formData:body,
         json:true,
