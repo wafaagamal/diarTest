@@ -1,4 +1,4 @@
-var request = require('request');
+var request = require('request-promise');
 var generate=require('./generator')
 let helper=require('./test-helper')
 const fs = require('fs');
