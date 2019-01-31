@@ -224,7 +224,7 @@ if(bgRider){
     console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
  
 
-    //await delay(1000);
+    await delay(1000);
     url='/journey/start'
     let startJ=await  start(url,'POST',_driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(startJ,"========================= START JOURNEY #########################");
