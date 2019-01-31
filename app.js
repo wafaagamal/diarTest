@@ -64,7 +64,10 @@ function start(url,method,ticket,body) {
             time:dateFormat(now, "dd,mm, yyyy,h")
           }
           logger.log({level:'info',message:obj2})
-          resolve(body);
+          let wait = setTimeout(() => {
+            clearTimout(wait);
+            resolve(body);
+          },30000)
         } else {
           let obj3={
             url:url,
