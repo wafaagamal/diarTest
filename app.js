@@ -50,80 +50,34 @@ function start(url,method,ticket,body) {
     }
    
     
-    // return new Promise(function (resolve, reject) {
-    //   request(option, function (error, res, body) {
-    //   console.log(option,"OPTIONS");
+    return new Promise(function (resolve, reject) {
+      request(option, function (error, res, body) {
+      console.log(option,"OPTIONS");
       
-    //   if(error.code === 'ETIMEDOUT'){console.log("~~~~~~~~~SERVER TIMEOUT~~~~~~~~")}
+    console.log(error,"~~~~~~~~~SERVER TIMEOUT~~~~~~~~")
       
-    //     if (!error && res.statusCode == 200) {
-    //       let obj2={
-    //         url:url,
-    //         response:JSON.stringify(body),
-    //         process:process.pid,
-    //         time:dateFormat(now, "dd,mm, yyyy,h")
-    //       }
-    //       logger.log({level:'info',message:obj2})
-    //       resolve(body);
-    //     } else {
-    //       let obj3={
-    //         url:url,
-    //         response:JSON.stringify(body),
-    //         process:process.pid,
-    //         time:dateFormat(now, "dd,mm, yyyy,h")
-    //       }
-    //       logger.log({level:'error',message:obj3})
-    //       console.log("IN start ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
-    //       reject(error);
-    //     }
-    //   });
-    // });
-
-
-          
-        return  new Promise(function(resolve, reject) {
-            const timeout = setTimeout(function() {
-                didTimeOut = true;
-                reject(new Error('Request timed out'));
-            }, FETCH_TIMEOUT);
-            return new Promise(function (resolve, reject) {
-                request(option, function (error, res, body) {
-                console.log(option,"OPTIONS");
-                
-                  if (!error && res.statusCode == 200) {
-                    let obj2={
-                      url:url,
-                      response:JSON.stringify(body),
-                      process:process.pid,
-                      time:dateFormat(now, "dd,mm, yyyy,h")
-                    }
-                    logger.log({level:'info',message:obj2})
-                    clearTimeout(timeout)
-                    if(!didTimeOut) {
-                    resolve(body);
-                    }
-                  } else {
-                    let obj3={
-                      url:url,
-                      response:JSON.stringify(body),
-                      process:process.pid,
-                      time:dateFormat(now, "dd,mm, yyyy,h")
-                    }
-                    logger.log({level:'error',message:obj3})
-                    console.log("IN start ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
-                    if(didTimeOut) return;
-                    reject(error);
-                  }
-                });
-              });
-          
-        })
-        .then(function() {
-            console.log('good promise, no timeout! ');
-        })
-        .catch(function(err) {
-            console.log('promise error! ', err);
-        });
+        if (!error && res.statusCode == 200) {
+          let obj2={
+            url:url,
+            response:JSON.stringify(body),
+            process:process.pid,
+            time:dateFormat(now, "dd,mm, yyyy,h")
+          }
+          logger.log({level:'info',message:obj2})
+          resolve(body);
+        } else {
+          let obj3={
+            url:url,
+            response:JSON.stringify(body),
+            process:process.pid,
+            time:dateFormat(now, "dd,mm, yyyy,h")
+          }
+          logger.log({level:'error',message:obj3})
+          console.log("IN start ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
+          reject(error);
+        }
+      });
+    });
   }
   function activeDriver(url,method,ticket,body) {
    
