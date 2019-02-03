@@ -145,7 +145,7 @@ function start(url,method,ticket,body) {
    await delay(2000);
     url='/location'
     console.log(obj,"*******************Center DRIVER***************");
-    bg=helper.generateBgLocation(obj,500)
+   let bg=helper.generateBgLocation(obj,500)
     let bgDriver=await start(url,'POST',_driver.ticket,bg)
 
 console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
@@ -164,7 +164,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
     console.log(_rider,"==========================ACCESS #############################################");
   
 
-    
+
     url='/location'
     let bg=helper.generateBgLocation(obj,300)
 if(_rider){
