@@ -167,13 +167,25 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
 
   
 if(_rider){
-  await delay(3000);
-     url='/location'
+
+  await new Promise (resolve => {
+    url='/location'
      console.log(obj,"*******************Center RIDER***************");
      let b_g=helper.generateBgLocation(obj,300)
      let bgRider=await start(url,'POST',_rider.ticket,b_g)
-    
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
+    setTimeout(resolve, 1000)
+  })
+
+
+
+  // await delay(3000);
+  //    url='/location'
+  //    console.log(obj,"*******************Center RIDER***************");
+  //    let b_g=helper.generateBgLocation(obj,300)
+  //    let bgRider=await start(url,'POST',_rider.ticket,b_g)
+    
+  //    console.log(bgRider,"========================= BG LOCATION RIDER #########################");
 
    await delay(2000);
     url='/user/push'
