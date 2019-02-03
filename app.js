@@ -157,24 +157,18 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
    console.log(riders,"===================================CREATE #############################################");
    await delay(2000);
     url='/access/rider'
-   start(url,'POST',null,rider).then((_rider)=>{
-      console.log(_rider,"==========================ACCESS #############################################");
+    let _rider=await start(url,'POST',null,rider) 
+    console.log(_rider,"==========================ACCESS #############################################");
 
+    await delay(2000);
+if(_rider){
+  console.log("#######################RIDER GWA###############33333",_rider);
+  
       url='/location'
       console.log(obj,"*******************Center RIDER***************");
       let b_g=helper.generateBgLocation(obj,300)
-      let bgRider= start(url,'POST',_rider.ticket,b_g)
+      let bgRider=await start(url,'POST',_rider.ticket,b_g)
       console.log(bgRider,"========================= BG LOCATION RIDER #########################");
-      
-    }) 
-   
-   
-
-    await delay(2000);
-//if(_rider){
-  // console.log("===+++++++++THERE++++++++++++++++++++++++++++++++++++++===");
-  
-     
    
  
 //    await delay(2000);
@@ -254,7 +248,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
 //          console.log(arr,"ARRAYYYYYY_____________________________==###");
          
 //     },600000)
-  //}
+  }
 
   }catch(err) {
     console.log("####################################ERROR",err)
