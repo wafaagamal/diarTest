@@ -171,7 +171,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
    
 
     await delay(2000);
-if(_rider){
+//if(_rider){
   // console.log("===+++++++++THERE++++++++++++++++++++++++++++++++++++++===");
   
      
@@ -254,7 +254,7 @@ if(_rider){
 //          console.log(arr,"ARRAYYYYYY_____________________________==###");
          
 //     },600000)
-  }
+  //}
 
   }catch(err) {
     console.log("####################################ERROR",err)
