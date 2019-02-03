@@ -58,7 +58,7 @@ function start(url,method,ticket,body) {
             url:url,
             response:JSON.stringify(body),
             process:process.pid,
-            time:dateFormat(now, "dd,mm, yyyy,h")
+            time:dateFormat(now, "dd,mm, yyyy,hh")
           }
           logger.log({level:'info',message:obj2})
             resolve(body);
@@ -67,7 +67,7 @@ function start(url,method,ticket,body) {
             url:url,
             response:JSON.stringify(body),
             process:process.pid,
-            time:dateFormat(now, "dd,mm, yyyy,h")
+            time:dateFormat(now, "dd,mm, yyyy,hh")
           }
           logger.log({level:'error',message:obj3})
           console.log("IN start ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
