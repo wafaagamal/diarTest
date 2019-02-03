@@ -165,7 +165,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
 //if(_rider){
       console.log("#######################RIDER GWA###############33333",array);
     
-  array.map(function(x){
+  array.map(async function(x){
     url='/location'
     console.log(obj,"*******************Center RIDER***************");
     let b_g=helper.generateBgLocation(obj,300)
