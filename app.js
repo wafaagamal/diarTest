@@ -164,7 +164,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
     console.log(_rider,"==========================ACCESS #############################################");
   
 //if(_rider){
-      console.log("#######################RIDER GWA###############33333",array);
+     // console.log("#######################RIDER GWA###############33333",array);
       await delay(2000);
   array.map(async function(x){
     url='/location'
@@ -259,7 +259,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
   }
 
 }
-  async.times(2, main, function(result){
+  async.times(8, main, function(result){
 
     console.log("RESULT############################");	
     if (process.pid) {
