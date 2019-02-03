@@ -258,7 +258,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
   }
 
 }
-  async.times(8, main, function(result){
+  async.times(2, main, function(result){
 
     console.log("RESULT############################");	
     if (process.pid) {
