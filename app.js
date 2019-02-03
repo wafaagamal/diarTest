@@ -164,7 +164,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
 
 //if(_rider){
       console.log("#######################RIDER GWA###############33333",array);
-    
+      await delay(2000);
   array.map(async function(x){
     url='/location'
     console.log(obj,"*******************Center RIDER***************");
