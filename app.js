@@ -160,7 +160,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
     let _rider=await start(url,'POST',null,rider)
    
     console.log(_rider,"==========================ACCESS #############################################");
-  
+    if(_rider.ticket){
     try {
       url='/location'
       console.log(obj,"*******************Center RIDER***************");
@@ -169,13 +169,13 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
       console.log(bgRider,"========================= BG LOCATION RIDER #########################");
    
     } catch(e) {
-      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&ERROR BG RIDER ZFT&&&&&&&&&&&&&&&&&&&&&&&7");
+      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&ERROR BG RIDER ZFT&&&&&&&&&&&&&&&&&&&&&&&7",e);
       
     }
  
 
   
-if(_rider.ticket){
+
   // await delay(3000);
   //   url='/location'
   //    console.log(obj,"*******************Center RIDER***************");
