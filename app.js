@@ -157,18 +157,24 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
    console.log(riders,"===================================CREATE #############################################");
    await delay(2000);
     url='/access/rider'
-    let _rider=await start(url,'POST',null,rider) 
-    console.log(_rider,"==========================ACCESS #############################################");
-   
-    await delay(2000);
-if(_rider){
-  console.log("===+++++++++THERE++++++++++++++++++++++++++++++++++++++===");
-  
+   start(url,'POST',null,rider).then((_rider)=>{
+      console.log(_rider,"==========================ACCESS #############################################");
+
       url='/location'
       console.log(obj,"*******************Center RIDER***************");
       let b_g=helper.generateBgLocation(obj,300)
       let bgRider=await start(url,'POST',_rider.ticket,b_g)
       console.log(bgRider,"========================= BG LOCATION RIDER #########################");
+      
+    }) 
+   
+   
+
+    await delay(2000);
+if(_rider){
+  // console.log("===+++++++++THERE++++++++++++++++++++++++++++++++++++++===");
+  
+     
    
  
 //    await delay(2000);
