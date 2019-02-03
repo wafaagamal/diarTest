@@ -156,20 +156,20 @@ function start(url,method,ticket,body) {
 
 if(_rider){
 
-  //   await delay(8000);
+     await delay(8000);
      url='/location'
      console.log(obj,"*******************center***************");
      let bg=helper.generateBgLocation(obj,300)
      let bgRider=await start(url,'POST',_rider.ticket,bg)
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
-if(bgRider){
+//if(bgRider){
      await delay(8000);
     bg=helper.generateBgLocation(obj,500)
   let bgDriver=await start(url,'POST',_driver.ticket,bg)
 
   console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
-}
+//}
    await delay(2000);
     url='/user/push'
     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
