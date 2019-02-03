@@ -166,7 +166,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
 
 
   
-if(_rider){
+//if(_rider){
 
   await new Promise (resolve => {
     url='/location'
@@ -264,7 +264,7 @@ setTimeout(async function(){
          console.log(arr,"ARRAYYYYYY_____________________________==###");
          
     },600000)
-  }
+ // }
 
   }catch(err) {
     console.log("####################################ERROR",err)
