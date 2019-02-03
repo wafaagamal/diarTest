@@ -164,11 +164,11 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
     console.log(_rider,"==========================ACCESS #############################################");
   
 
+    
+    url='/location'
+    let bg=helper.generateBgLocation(obj,300)
 if(_rider){
-     await delay(2000);
-     url='/location'
      console.log(obj,"*******************Center RIDER***************");
-     let bg=helper.generateBgLocation(obj,300)
      let bgRider=await start(url,'POST',_rider.ticket,bg)
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
