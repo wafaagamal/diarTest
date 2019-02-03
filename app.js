@@ -164,7 +164,7 @@ if(_rider){
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
 if(bgRider){
-     await delay(8000);
+    // await delay(8000);
      url='/location'
      console.log(obj,"*******************Center DRIV***************");
     bg=helper.generateBgLocation(obj,500)
