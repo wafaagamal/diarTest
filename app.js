@@ -142,7 +142,7 @@ function start(url,method,ticket,body) {
  console.log(_driver.user._id,"=========================== DRIVER ID ############################");
 
  if(_driver){
-  // await delay(8000);
+   await delay(2000);
     url='/location'
     console.log(obj,"*******************Center DRIVER***************");
     bg=helper.generateBgLocation(obj,500)
@@ -166,7 +166,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
 
 if(_rider){
 
-    // await delay(8000);
+     await delay(2000);
      url='/location'
      console.log(obj,"*******************Center RIDER***************");
      let bg=helper.generateBgLocation(obj,300)
