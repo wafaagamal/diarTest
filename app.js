@@ -166,7 +166,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
 
 
   
-//if(_rider){
+if(_rider){
 
     url='/location'
      console.log(obj,"*******************Center RIDER***************");
@@ -184,7 +184,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
   //    let bgRider=await start(url,'POST',_rider.ticket,b_g)
     
   //    console.log(bgRider,"========================= BG LOCATION RIDER #########################");
-  if(_rider){
+ 
    await delay(2000);
     url='/user/push'
     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
