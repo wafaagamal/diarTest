@@ -159,7 +159,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
    await delay(2000);
     url='/access/rider'
     let _rider=await start(url,'POST',null,rider) 
-    array.push(_rider)
+    array.push(_rider.ticket)
     console.log(_rider,"==========================ACCESS #############################################");
 
 //if(_rider){
