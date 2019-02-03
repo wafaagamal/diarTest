@@ -236,7 +236,7 @@ if(bgRider){
             clearInterval(time)
           }
     },1000)
-      
+    await delay(2000);   
 setTimeout(async function(){
     console.log("%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
     url='/journey/end'
