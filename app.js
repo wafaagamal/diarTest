@@ -103,7 +103,7 @@ function start(url,method,ticket,body) {
               logger.log({level:'info',message:obj2})
           resolve(body);
         } else { 
-          console.log("IN ACTIVATE ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res);
+          console.log("IN ACTIVATE ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res.statusCode,res.body);
           let obj3={
             url:url,
             response:JSON.stringify(body),
