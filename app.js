@@ -140,6 +140,16 @@ function start(url,method,ticket,body) {
     let _driver=  await activeDriver(url,'POST',null,formData)
    
  console.log(_driver.user._id,"=========================== DRIVER ID ############################");
+
+ if(_driver){
+  // await delay(8000);
+    url='/location'
+    console.log(obj,"*******************Center DRIV***************");
+    bg=helper.generateBgLocation(obj,500)
+    let bgDriver=await start(url,'POST',_driver.ticket,bg)
+
+console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
+}
  
  await delay(2000);
     url='/create/rider'
@@ -152,7 +162,7 @@ function start(url,method,ticket,body) {
     let _rider=await start(url,'POST',null,rider)
    
     console.log(_rider,"==========================ACCESS #############################################");
-
+  
 
 if(_rider){
 
@@ -163,15 +173,7 @@ if(_rider){
      let bgRider=await start(url,'POST',_rider.ticket,bg)
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
-if(bgRider){
-    // await delay(8000);
-     url='/location'
-     console.log(obj,"*******************Center DRIV***************");
-    bg=helper.generateBgLocation(obj,500)
-  let bgDriver=await start(url,'POST',_driver.ticket,bg)
 
-  console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
-}
    await delay(2000);
     url='/user/push'
     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
