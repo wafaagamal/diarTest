@@ -156,15 +156,15 @@ function start(url,method,ticket,body) {
 
 if(_rider){
 
-     await delay(3000);
+     await delay(8000);
      url='/location'
-     console.log(obj,"center***************");
+     console.log(obj,"*******************center***************");
      let bg=helper.generateBgLocation(obj,300)
      let bgRider=await start(url,'POST',_rider.ticket,bg)
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
 if(bgRider){
-     await delay(3000);
+     await delay(8000);
     bg=helper.generateBgLocation(obj,500)
   let bgDriver=await start(url,'POST',_driver.ticket,bg)
 
@@ -227,7 +227,7 @@ if(bgRider){
     // }
    
     let time=setInterval(async function(){
-    console.log("HEREEEEE**************************************************");
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$==HEREEEEE**************************************************");
           url='/location'
           let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
           console.log(bg,"========================= BG LOCATION  #########################");
