@@ -14,6 +14,7 @@ let Supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjcwMTA0ODE3MiwiZXh
 let end
 let  regObject
 let arr={}
+let array=[]
 var obj=
 { 
     "lat": "31.205753",
@@ -158,18 +159,20 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
    await delay(2000);
     url='/access/rider'
     let _rider=await start(url,'POST',null,rider) 
+    array.push(_rider)
     console.log(_rider,"==========================ACCESS #############################################");
 
-    await delay(2000);
-if(_rider){
-  console.log("#######################RIDER GWA###############33333",_rider);
-  
-      url='/location'
-      console.log(obj,"*******************Center RIDER***************");
-      let b_g=helper.generateBgLocation(obj,300)
-      let bgRider=await start(url,'POST',_rider.ticket,b_g)
-      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
-   
+//if(_rider){
+      console.log("#######################RIDER GWA###############33333",array);
+    
+  array.map(function(x){
+    url='/location'
+    console.log(obj,"*******************Center RIDER***************");
+    let b_g=helper.generateBgLocation(obj,300)
+    let bgRider=await start(url,'POST',x.ticket,b_g)
+    console.log(bgRider,"========================= BG LOCATION RIDER #########################");
+
+  })
  
 //    await delay(2000);
 //     url='/user/push'
@@ -248,7 +251,7 @@ if(_rider){
 //          console.log(arr,"ARRAYYYYYY_____________________________==###");
          
 //     },600000)
-  }
+ // }
 
   }catch(err) {
     console.log("####################################ERROR",err)
