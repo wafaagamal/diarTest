@@ -168,6 +168,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
     url='/location'
     let bg=helper.generateBgLocation(obj,300)
 if(_rider){
+  await delay(3000);
      console.log(obj,"*******************Center RIDER***************");
      let bgRider=await start(url,'POST',_rider.ticket,bg)
     
