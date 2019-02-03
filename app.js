@@ -162,7 +162,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
 
     await delay(2000);
 if(_rider){
-  console.log("#######################RIDER GWA###############33333",_rider);
+  console.log("#######################RIDER GWA###############33333",_rider.ticket);
   
       url='/location'
       console.log(obj,"*******************Center RIDER***************");
