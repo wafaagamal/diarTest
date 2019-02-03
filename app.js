@@ -8,8 +8,6 @@ var process = require('process');
 const delay = require('delay');
 let formData
 var dateFormat = require('dateformat');
-const FETCH_TIMEOUT = 30000;
-let didTimeOut = false;
 var now = new Date();
 let rider
 let Supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjcwMTA0ODE3MiwiZXhwIjoxNTQ5NDUyNDU2MDAwMDAwLCJpYXQiOjE1NDkxOTMyNTYwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM1NmQwMjYzYzU4NjAwOTZkMWVhMWRkIiwicm9sZSI6InN1cGVydmlzb3IifX0.xIg8UtJxScgDlGGQ5K24UYwQY6EYY49QX5s3QUNSz5g"
@@ -166,7 +164,7 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
 
 
   
-if(_rider){
+if(_rider.ticket){
   await delay(3000);
     url='/location'
      console.log(obj,"*******************Center RIDER***************");
