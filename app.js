@@ -157,42 +157,17 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
    console.log(riders,"===================================CREATE #############################################");
    await delay(2000);
     url='/access/rider'
-    let _rider=await start(url,'POST',null,rider)
-   
+    let _rider=await start(url,'POST',null,rider) 
     console.log(_rider,"==========================ACCESS #############################################");
-    if(_rider.ticket){
-    try {
+   
+    await delay(2000);
+if(_rider){
       url='/location'
       console.log(obj,"*******************Center RIDER***************");
       let b_g=helper.generateBgLocation(obj,300)
       let bgRider=await start(url,'POST',_rider.ticket,b_g)
       console.log(bgRider,"========================= BG LOCATION RIDER #########################");
    
-    } catch(e) {
-      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&ERROR BG RIDER ZFT&&&&&&&&&&&&&&&&&&&&&&&7",e);
-      
-    }
- 
-
-  
-
-  // await delay(3000);
-  //   url='/location'
-  //    console.log(obj,"*******************Center RIDER***************");
-  //    let b_g=helper.generateBgLocation(obj,300)
-  //    let bgRider=await start(url,'POST',_rider.ticket,b_g)
-  //    console.log(bgRider,"========================= BG LOCATION RIDER #########################");
-  
-
-
-
-  // await delay(3000);
-  //    url='/location'
-  //    console.log(obj,"*******************Center RIDER***************");
-  //    let b_g=helper.generateBgLocation(obj,300)
-  //    let bgRider=await start(url,'POST',_rider.ticket,b_g)
-    
-  //    console.log(bgRider,"========================= BG LOCATION RIDER #########################");
  
    await delay(2000);
     url='/user/push'
