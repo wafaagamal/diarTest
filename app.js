@@ -152,17 +152,17 @@ console.log(bgDriver,"========================= BG LOCATION DRIVER #############
  
  await delay(2000);
     url='/create/rider'
-    rider=generate.rider()
-    let riders=await start(url,'POST',null,rider)
-    
+   let rider=generate.rider()
+    let riders=await start(url,'POST',null,rider)  
+
    console.log(riders,"===================================CREATE #############################################");
    await delay(2000);
-   if(riders){
+ 
     url='/access/rider'
     let _rider=await start(url,'POST',null,rider) 
     array.push(_rider.ticket)
     console.log(_rider,"==========================ACCESS #############################################");
-   }
+  
 //if(_rider){
       console.log("#######################RIDER GWA###############33333",array);
       await delay(2000);
