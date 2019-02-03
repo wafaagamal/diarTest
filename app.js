@@ -172,7 +172,7 @@ if(_rider){
      let bgRider=await start(url,'POST',_rider.ticket,bg)
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
-}
+
    await delay(2000);
     url='/user/push'
     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
@@ -250,7 +250,7 @@ setTimeout(async function(){
          console.log(arr,"ARRAYYYYYY_____________________________==###");
          
     },600000)
-
+  }
 
   }catch(err) {
     console.log("####################################ERROR",err)
