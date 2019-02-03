@@ -158,13 +158,15 @@ if(_rider){
 
      await delay(8000);
      url='/location'
-     console.log(obj,"*******************center***************");
+     console.log(obj,"*******************Center RID***************");
      let bg=helper.generateBgLocation(obj,300)
      let bgRider=await start(url,'POST',_rider.ticket,bg)
     
      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
 //if(bgRider){
      await delay(8000);
+     url='/location'
+     console.log(obj,"*******************Center DRIV***************");
     bg=helper.generateBgLocation(obj,500)
   let bgDriver=await start(url,'POST',_driver.ticket,bg)
 
@@ -227,7 +229,7 @@ if(_rider){
     // }
    
     let time=setInterval(async function(){
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$==HEREEEEE**************************************************");
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$==^^HEREEEEE**************************************************");
           url='/location'
           let bg=await start(url,'POST',_driver.ticket,helper.generateBgLocation(obj,500))
           console.log(bg,"========================= BG LOCATION  #########################");
