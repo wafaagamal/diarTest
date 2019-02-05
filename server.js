@@ -65,7 +65,8 @@ function start(url,method,ticket,body) {
         timeout: 60000
     }
    
-    
+    console.log(`inside request using options: 
+    ${JSON.stringify(option)}`)
     return new Promise(function (resolve, reject) {
        
       request(option, function (error, res, body) {
@@ -100,12 +101,16 @@ function start(url,method,ticket,body) {
           time:new Date().toTimeString() 
          }
           if(error){
+            console.log(error,"ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRrrrrr");
+            
             result.error = error;
             logger.log({level:'error', result: result})
             return reject(error);
           } 
 
           logger.log({level:'info', result:result});
+          console.log(res," %%%%%%%%%%%%%%%%%%%%RESPONSE&&&&&&&&&&&&&&&&&&&&&&&&");
+          
           return setTimeout(resolve, 1000, body)
       }); 
     });
@@ -403,29 +408,29 @@ function start(url,method,ticket,body) {
 }
 
 
-main()
-// const cluster = require('cluster');
-// const http = require('http');
-// const numCPUs = require('os').cpus().length;
 
-// if (cluster.isMaster) {
-//   console.log(`Master ${process.pid} is running`);
+const cluster = require('cluster');
+const http = require('http');
+const numCPUs = require('os').cpus().length;
 
-//   // Fork workers.
-//   for (let i = 0; i < numCPUs; i++) {
-//     console.log('cpu: ' + i)
-//     cluster.fork();
-//   }
+if (cluster.isMaster) {
+  console.log(`Master ${process.pid} is running`);
 
-//   cluster.on('exit', (worker, code, signal) => {
-//     console.log(`worker ${worker.process.pid} died`);
-//   });
-// } else {
+  // Fork workers.
+  for (let i = 0; i < numCPUs; i++) {
+    console.log('cpu: ' + i)
+    cluster.fork();
+  }
 
-//   main()
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`worker ${worker.process.pid} died`);
+  });
+} else {
 
-//   console.log(`Worker ${process.pid} started`);
-// }
+  main()
+
+  console.log(`Worker ${process.pid} started`);
+}
 
 
 
