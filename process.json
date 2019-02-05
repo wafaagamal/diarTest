@@ -2,7 +2,7 @@
   "apps" : [{
     "name"               : "eserve-mobile-backend",
     "script"             : "server.js",
-    "instances"          : 4,
+    "instances"          : 10,
     "max_memory_restart" : "450M",
     "exec_mode"          : "cluster",
     "merge_logs"         : true,

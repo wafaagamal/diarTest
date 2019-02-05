@@ -9,9 +9,9 @@ deg2rad = function(deg) {
 	 * @param  {number} radius [in meter]
 	 * @return {[type]}        [description]
 	 */
-	generateCoords = function(center={lat:31.205753,lng:29.924526}, radius = 500){
+	generateCoords = function(center={lat:31.205753,lng:29.924526}, radius = 1000){
 
-		console.log(`center==> ${JSON.stringify(center)}`)
+		
 	    var y0 = parseFloat(center.lat);
 	    var x0 = parseFloat(center.lng);
 	    var rd = radius / 111300; //about 111300 meters in one degree
@@ -31,7 +31,7 @@ deg2rad = function(deg) {
 	    var newlon = x + x0;
 	    var newlon2 = xp + x0;
 
-		console.log(`newLat => ${newlat}`)
+		
 	    return {
 	        'lat': newlat.toFixed(5),
 	        'lng': newlon.toFixed(5)
