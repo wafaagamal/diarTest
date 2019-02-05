@@ -55,7 +55,7 @@ let journeyObj = {
 function start(url,method,ticket,body) {
    
     let option={
-        url: "http://ec2-3-80-184-251.compute-1.amazonaws.com:3000/api"+url,
+        url: "http://ec2-18-206-241-3.compute-1.amazonaws.com:3000/api"+url,
         method:method,
         json: true,
         headers: {
@@ -65,8 +65,7 @@ function start(url,method,ticket,body) {
         timeout: 60000
     }
    
-    console.log(`inside request using options: 
-    ${JSON.stringify(option)}`)
+   
     return new Promise(function (resolve, reject) {
        
       request(option, function (error, res, body) {
@@ -101,16 +100,12 @@ function start(url,method,ticket,body) {
           time:new Date().toTimeString() 
          }
           if(error){
-            console.log(error,"ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRrrrrr");
-            
             result.error = error;
             logger.log({level:'error', result: result})
             return reject(error);
           } 
 
           logger.log({level:'info', result:result});
-          console.log(res," %%%%%%%%%%%%%%%%%%%%RESPONSE&&&&&&&&&&&&&&&&&&&&&&&&");
-          
           return setTimeout(resolve, 1000, body)
       }); 
     });
@@ -118,7 +113,7 @@ function start(url,method,ticket,body) {
   function activeDriver(url,method,ticket,body) {
    
     let option={
-        url: "http://ec2-3-80-184-251.compute-1.amazonaws.com:3000/api"+url,
+        url: "http://ec2-18-206-241-3.compute-1.amazonaws.com:3000/api"+url,
         method: method,
         formData:body,
         json:true,
@@ -304,7 +299,7 @@ function start(url,method,ticket,body) {
     console.log(`driver accepted journey`);
 
     /* start journey */
-    await  start('/journey/start','POST',driver.ticket,{"riderCode":accept.journey.riderCode})
+    let startJ=await  start('/journey/start','POST',driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(`driver accepted journey`);
 
     for(let x=0; x<300; x++){
@@ -417,7 +412,7 @@ if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
 
   // Fork workers.
-  for (let i = 0; i < numCPUs; i++) {
+  for (let i = 0; i < numCPUs*4; i++) {
     console.log('cpu: ' + i)
     cluster.fork();
   }
