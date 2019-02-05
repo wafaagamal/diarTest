@@ -62,7 +62,7 @@ function start(url,method,ticket,body) {
             'ticket':ticket 
         },
         body: body,
-        timeout: 60000
+        timeout: 100000
     }
    
    
@@ -162,62 +162,62 @@ function start(url,method,ticket,body) {
      * modified the console log for better readability 
      */
 
-    let superAdminObject ={
-      email:'bahi.hussein@gmail.com',
-      password:'@Eserve2012'
-    }
-    let superadmin = await start('/access/staff','POST',null,superAdminObject)
-    console.log(`superadmin logged-in
-    ticket: ${superadmin.ticket}`)
+    // let superAdminObject ={
+    //   email:'bahi.hussein@gmail.com',
+    //   password:'@Eserve2012'
+    // }
+    // let superadmin = await start('/access/staff','POST',null,superAdminObject)
+    // console.log(`superadmin logged-in
+    // ticket: ${superadmin.ticket}`)
 
 
 
-    /*
-     * registering admin
-     * 
-     * add let infront of admin to limit the scope 
-     * 
-     * add the url directly to the function for better readability and there is no
-     * reason for serperation 
-     * 
-     * modified the console log for better readability 
-     */ 
+    // /*
+    //  * registering admin
+    //  * 
+    //  * add let infront of admin to limit the scope 
+    //  * 
+    //  * add the url directly to the function for better readability and there is no
+    //  * reason for serperation 
+    //  * 
+    //  * modified the console log for better readability 
+    //  */ 
     
-    let admin = generate.staff()
-    let regObject = await start('/stage/admin','POST',superadmin.ticket,admin)
-    console.log(`admin registered:
-    ${JSON.stringify(regObject)}`);
+    // let admin = generate.staff()
+    // let regObject = await start('/stage/admin','POST',superadmin.ticket,admin)
+    // console.log(`admin registered:
+    // ${JSON.stringify(regObject)}`);
 
-    // url='/stage/admin'
-    // admin=generate.staff()
-    // let regObject = await start(url,'POST',superadmin.ticket,admin)
-    // console.log(regObject,"===========================Admin ############################");
+    // // url='/stage/admin'
+    // // admin=generate.staff()
+    // // let regObject = await start(url,'POST',superadmin.ticket,admin)
+    // // console.log(regObject,"===========================Admin ############################");
 
-    //no need for delay - you can delay the resolve using settimeout - look back to the promise of start()
-    //await delay(1000);
+    // //no need for delay - you can delay the resolve using settimeout - look back to the promise of start()
+    // //await delay(1000);
 
 
-    /** using previous return admin regObject and adding password property to it  */
-    regObject.password=helper.generate('mix', 8);
-    admin = await start('/activate/staff','POST',null,regObject)
-    console.log(`activated admin: 
-    ${JSON.stringify(admin)}`)
+    // /** using previous return admin regObject and adding password property to it  */
+    // regObject.password=helper.generate('mix', 8);
+    // admin = await start('/activate/staff','POST',null,regObject)
+    // console.log(`activated admin: 
+    // ${JSON.stringify(admin)}`)
 
-    /*registering supervisor*/
-    let supervisor=generate.staff();
-    regObject = await start('/stage/supervisor','POST',admin.ticket,supervisor)
-    console.log(`registered supervisor: 
-    ${JSON.stringify(regObject)}`
-    );
+    // /*registering supervisor*/
+    // let supervisor=generate.staff();
+    // regObject = await start('/stage/supervisor','POST',admin.ticket,supervisor)
+    // console.log(`registered supervisor: 
+    // ${JSON.stringify(regObject)}`
+    // );
 
-    /* adding password to supervisor registration object for activation */
-    regObject.password=helper.generate('mix', 8)
-    supervisor = await start('/activate/staff','POST',null,regObject)
-    console.log(`activated supervisor: 
-    ${JSON.stringify(supervisor)}`);
+    // /* adding password to supervisor registration object for activation */
+    // regObject.password=helper.generate('mix', 8)
+    // supervisor = await start('/activate/staff','POST',null,regObject)
+    // console.log(`activated supervisor: 
+    // ${JSON.stringify(supervisor)}`);
 
- 
-    regObject = await start('/stage/driver','POST',supervisor.ticket,generate.driver())
+    let supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjcwMTA0ODE3MiwiZXhwIjoxNTQ5NDUyNDU2MDAwMDAwLCJpYXQiOjE1NDkxOTMyNTYwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM1NmQwMjYzYzU4NjAwOTZkMWVhMWRkIiwicm9sZSI6InN1cGVydmlzb3IifX0.xIg8UtJxScgDlGGQ5K24UYwQY6EYY49QX5s3QUNSz5g"
+    regObject = await start('/stage/driver','POST',supervisor,generate.driver())
     console.log(`staged driver: 
     ${JSON.stringify(regObject)}`)
 
@@ -242,9 +242,7 @@ function start(url,method,ticket,body) {
     let rider=generate.rider();
     /* you were using rider */
     let riderAccess=await start('/create/rider','POST',null,rider);
-    rider.ticket = riderAccess.ticket
-    console.log(`registered a rider: 
-    ${riderAccess.ticket}`);
+    console.log(`registered a rider`,riderAccess);
     
     /* access rider */
     rider=await start('/access/rider','POST',null,rider)
@@ -274,12 +272,12 @@ function start(url,method,ticket,body) {
     console.log(`sent driver push id.`);
 
     /*adding car */
-     let carId=await start('/add/car','POST',supervisor.ticket,{
+     let carId=await start('/add/car','POST',supervisor,{
       'uniqueId':helper.generate('numeric',6),
       'desc':helper.generate("lalpha",30)
      })
      console.log(`added car:
-     ${carId}`);
+     ${JSON.stringify(carId)}`);
 
      /*link car to driver*/
      await start('/car/driver','POST',driver.ticket,carId);
@@ -299,8 +297,8 @@ function start(url,method,ticket,body) {
     console.log(`driver accepted journey`);
 
     /* start journey */
-    let startJ=await  start('/journey/start','POST',driver.ticket,{"riderCode":accept.journey.riderCode})
-    console.log(`driver accepted journey`);
+    await  start('/journey/start','POST',driver.ticket,{"riderCode":accept.journey.riderCode})
+    console.log(`driver started journey`);
 
     for(let x=0; x<300; x++){
       /*sending background location*/
@@ -308,92 +306,9 @@ function start(url,method,ticket,body) {
       console.log(`trace sent @ ${new Date().getTime()}`)
     }
 
-    end=await start('/journey/end','POST',driver.ticket,{"riderCode":startJ.journey.riderCode})
+    end=await start('/journey/end','POST',driver.ticket,{"riderCode":accept.journey.riderCode})
 
-
-// if(rider){
-
-//      console.log(obj,"center***************");
-//      let bg=helper.generateBgLocation(obj,300)
-//      let bgRider=await start('/location','POST',rider.ticket,bg)
-    
-//      console.log(bgRider,"========================= BG LOCATION RIDER #########################");
-// if(bgRider){
-//     // await delay(1000);
-//     bg=helper.generateBgLocation(obj,500)
-//   let bgDriver=await start(url,'POST',driver.ticket,bg)
-
-//   console.log(bgDriver,"========================= BG LOCATION DRIVER #########################");
-// }
-//  // await delay(1000);
-//     url='/user/push'
-//     let pushId="bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2kbk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1bk3RNwTe3H0:CI2k"
-//     let rider_id=await start(url,'POST',rider.ticket,{'pushId':pushId})
-  
-//     console.log(rider_id,"========================= PUSH ID RIDER #########################");
-
-//     let driver_id=await start(url,'POST',driver.ticket,{'pushId':pushId})
-  
-//     console.log(driver_id,"========================= PUSH ID DRIVER #########################");
-  
-  //  url='/add/car'
-  //  let car={
-  //   'uniqueId':helper.generate('numeric',6),
-  //   'desc':helper.generate("lalpha",30)
-  //  }
-  //   let carId=await start(url,'POST',supervisor.ticket,car)
-  //   console.log(carId,"========================= CREATE CAR #########################");
-
-  //  // await delay(1000);
-  //   url='/car/driver'
-  //   let msg=await start(url,'POST',driver.ticket,carId)   
-  //   console.log(msg,"========================= CONNECT DRIVER TO CAR #########################");
- 
-   // await delay(1000);
-    // url='/journey'
-    // let jour=await start(url,'POST',rider.ticket,coords)
-    // console.log(jour,"========================= CREATE JOURNEY #########################");
-
-  //  await delay(1000);
-  //   url='/journey/latest'
-  //   let last=await start(url,'GET',rider.ticket)
-  //   console.log(last.journey._id,"========================= GET LAST JOURNEY #########################");
-    
-    
-    // await delay(2000);
-  
-    // console.log(accept.journey._id,"========================= ACCEPT JOURNEY #########################");
- 
-
-    // await delay(1000);
-    // url='/journey/start'
-    // let startJ=await  start(url,'POST',driver.ticket,{"riderCode":accept.journey.riderCode})
-    // console.log(startJ,"========================= START JOURNEY #########################");
-    
-
-   
-    // let time=setInterval(async function(){
-    // console.log("HEREEEEE**************************************************");
-    //       url='/location'
-    //       let bg=await start(url,'POST',driver.ticket,helper.generateBgLocation(obj,500))
-    //       console.log(bg,"========================= BG LOCATION  #########################");
-    //       if(end){
-    //       console.log("============================CLEAR INTERVAL======================");
-    //         clearInterval(time)
-    //       }
-    // },10000)
-      
-// setTimeout(async function(){
-//     url='/journey/end'
-//     end=await start(url,'POST',driver.ticket,{"riderCode":startJ.journey.riderCode})
-//      console.log(end.journey.cost,"%%%%%%%%%%%%%%%%%%%%%%JOURNNEY END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-//          arr[end.journey._id] =end.journey.cost
-//          fs.appendFile('history.json',`{${JSON.stringify(arr)} ,"prossesID": ${process.pid}}`+','+'\r\n')
-//          console.log(arr,"ARRAYYYYYY_____________________________==###");
-         
-//     },1000*10000)
-
-  // }//  
+    console.log("####################END JOURNEY####################################",end.journey._id); 
   }catch(err) {
     console.log("catch() triggered: one of the requests failed. ")
     console.log(err)
@@ -403,29 +318,29 @@ function start(url,method,ticket,body) {
 }
 
 
+main()
+// const cluster = require('cluster');
+// const http = require('http');
+// const numCPUs = require('os').cpus().length;
 
-const cluster = require('cluster');
-const http = require('http');
-const numCPUs = require('os').cpus().length;
+// if (cluster.isMaster) {
+//   console.log(`Master ${process.pid} is running`);
 
-if (cluster.isMaster) {
-  console.log(`Master ${process.pid} is running`);
+//   // Fork workers.
+//   for (let i = 0; i < numCPUs; i++) {
+//     console.log('cpu: ' + i)
+//     cluster.fork();
+//   }
 
-  // Fork workers.
-  for (let i = 0; i < numCPUs*4; i++) {
-    console.log('cpu: ' + i)
-    cluster.fork();
-  }
+//   cluster.on('exit', (worker, code, signal) => {
+//     console.log(`worker ${worker.process.pid} died`);
+//   });
+// } else {
 
-  cluster.on('exit', (worker, code, signal) => {
-    console.log(`worker ${worker.process.pid} died`);
-  });
-} else {
+//   main()
 
-  main()
-
-  console.log(`Worker ${process.pid} started`);
-}
+//   console.log(`Worker ${process.pid} started`);
+// }
 
 
 
