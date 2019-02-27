@@ -297,10 +297,13 @@ function start(url,method,ticket,body) {
     console.log(`driver accepted journey`);
 
     /* start journey */
+    
     await  start('/journey/start','POST',driver.ticket,{"riderCode":accept.journey.riderCode})
     console.log(`driver started journey`);
 
     for(let x=0; x<300; x++){
+      console.log("++++++HERE+++++");
+      
       /*sending background location*/
       await start('/location','POST',driver.ticket,helper.generateBgLocation(centerPoint))
       console.log(`trace sent @ ${new Date().getTime()}`)
@@ -340,6 +343,7 @@ if (cluster.isMaster) {
   main()
 
   console.log(`Worker ${process.pid} started`);
+  console.log(`Memory :${JSON.stringify(process.memoryUsage().heapUsed)} used`);
 }
 
 
