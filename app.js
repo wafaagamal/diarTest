@@ -10,7 +10,7 @@ let formData
 var dateFormat = require('dateformat');
 var now = new Date();
 let rider
-let Supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjcwMTA0ODE3MiwiZXhwIjoxNTQ5NDUyNDU2MDAwMDAwLCJpYXQiOjE1NDkxOTMyNTYwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM1NmQwMjYzYzU4NjAwOTZkMWVhMWRkIiwicm9sZSI6InN1cGVydmlzb3IifX0.xIg8UtJxScgDlGGQ5K24UYwQY6EYY49QX5s3QUNSz5g"
+let Supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjQ2MDA5ODYzOCwiZXhwIjoxNTUxNTMzMjc0MDAwMDAwLCJpYXQiOjE1NTEyNzQwNzQwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM0MDk0M2I1NGI0ODUyZjE5NDhkNGFhIiwicm9sZSI6InN1cGVydmlzb3IifX0.5k1mS7A165E_EF9aru2ugVHY4qt0ClVv2UHgZZJQzI4"
 let end
 let  regObject
 let arr={}
@@ -259,7 +259,7 @@ setTimeout(async function(){
   }
 
 }
-  async.times(8, main, function(result){
+  async.times(1, main, function(result){
 
     console.log("RESULT############################");	
     if (process.pid) {
