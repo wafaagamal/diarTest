@@ -92,7 +92,7 @@ function start(url,method,ticket,body) {
           //   reject(error);
           // }
 
-console.log(option,"OPTION");
+// console.log(option,"OPTION");
 
           res= res||{};
          let result = {
@@ -129,7 +129,7 @@ console.log(option,"OPTION");
       
       request(option, function (error, res, body) {
 
-console.log(option,"OPTION");
+// console.log(option,"OPTION");
 
         res= res||{};
          let result = {
