@@ -91,6 +91,9 @@ function start(url,method,ticket,body) {
           //   console.log("IN start ERR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",res);
           //   reject(error);
           // }
+
+console.log(option,"OPTION");
+
           res= res||{};
          let result = {
           url:url,
