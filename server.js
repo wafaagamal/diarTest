@@ -126,6 +126,7 @@ function start(url,method,ticket,body) {
       
       request(option, function (error, res, body) {
 
+console.log(option,"OPTION");
 
         res= res||{};
          let result = {
