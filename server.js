@@ -55,7 +55,7 @@ let journeyObj = {
 function start(url,method,ticket,body) {
    
     let option={
-        url: "http://ec2-18-206-241-3.compute-1.amazonaws.com:3000/api"+url,
+        url: "http://ec2-54-89-227-143.compute-1.amazonaws.com:3000/api"+url,
         method:method,
         json: true,
         headers: {
@@ -113,7 +113,7 @@ function start(url,method,ticket,body) {
   function activeDriver(url,method,ticket,body) {
    
     let option={
-        url: "http://ec2-18-206-241-3.compute-1.amazonaws.com:3000/api"+url,
+        url: "http://ec2-54-89-227-143.compute-1.amazonaws.com:3000/api"+url,
         method: method,
         formData:body,
         json:true,
@@ -216,7 +216,7 @@ function start(url,method,ticket,body) {
     // console.log(`activated supervisor: 
     // ${JSON.stringify(supervisor)}`);
 
-    let supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjcwMTA0ODE3MiwiZXhwIjoxNTQ5NDUyNDU2MDAwMDAwLCJpYXQiOjE1NDkxOTMyNTYwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM1NmQwMjYzYzU4NjAwOTZkMWVhMWRkIiwicm9sZSI6InN1cGVydmlzb3IifX0.xIg8UtJxScgDlGGQ5K24UYwQY6EYY49QX5s3QUNSz5g"
+    let supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjE3NDU0NzI1MywiZXhwIjoxNTUxNTM3MTQ0MDAwMDAwLCJpYXQiOjE1NTEyNzc5NDQwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM0MDk0M2I1NGI0ODUyZjE5NDhkNGFhIiwicm9sZSI6InN1cGVydmlzb3IifX0.vMXivfBb5weC6bwK3t6dmBY_n2oltMKvavMYefYdStw"
     regObject = await start('/stage/driver','POST',supervisor,generate.driver())
     console.log(`staged driver: 
     ${JSON.stringify(regObject)}`)
