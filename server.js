@@ -220,7 +220,7 @@ function start(url,method,ticket,body) {
     // console.log(`activated supervisor: 
     // ${JSON.stringify(supervisor)}`);
 
-    let supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjMyNDE2NTU4NiwiZXhwIjoxNTUxNTQxNzA4MDAwMDAwLCJpYXQiOjE1NTEyODI1MDgwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM3NmFiMTA2YTYzMGUwNGVlNzc1MTA3Iiwicm9sZSI6InN1cGVydmlzb3IifX0.W8Vb6cJep3WkAZexO-SBu-n84ZEwYi1YxprBPLPn_Cs"
+    let supervisor="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm4iOjc5Njk0MTA0MiwiZXhwIjoxNTUxNjIyNzM4MDAwMDAwLCJpYXQiOjE1NTEzNjM1MzgwMDAwMDAsImRhdGEiOnsiX2lkIjoiNWM3N2VkYWI5MTM4MmEwNzAyMGVmYWZkIiwicm9sZSI6InN1cGVydmlzb3IifX0.ZtalVhwN8E_ZeGM8D7r85FJXxHt2bavZmJ-4v6DFlPM"
     regObject = await start('/stage/driver','POST',supervisor,generate.driver())
     console.log(`staged driver: 
     ${JSON.stringify(regObject)}`)
