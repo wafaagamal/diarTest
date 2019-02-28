@@ -95,6 +95,8 @@ function start(url,method,ticket,body) {
 // console.log(option,"OPTION");
 
           res= res||{};
+          console.log(res);
+          
          let result = {
           url:url,
           statusCode: res.statusCode,
