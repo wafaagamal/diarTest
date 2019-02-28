@@ -21,19 +21,13 @@ var obj=
     "lng": "29.924526"
 }
 var coords ={  
-  pickCoords: 
-    { 
-      "lat": helper.generateCoords().lat,
-      "lng": helper.generateCoords().lng 	
-    },
-    destCoords: 
-   { 
-     "lat": helper.generateCoords().lat,
-     "lng": helper.generateCoords().lng	
-    } ,
-    mobileNumber :"010"+helper.generate('numeric',8),
-    pickAddress:helper.generate('all-alpha',10)+","+helper.generate('all-alpha',10),  
-    destAddress:helper.generate('all-alpha',30) 
+  pickCoords:  helper.generateCoords().lat,
+  
+  destCoords: helper.generateCoords().lat,
+    
+  mobileNumber :"010"+helper.generate('numeric',8),
+  pickAddress:helper.generate('all-alpha',10)+","+helper.generate('all-alpha',10),  
+  destAddress:helper.generate('all-alpha',30) 
 }  
 function start(url,method,ticket,body) {
    
